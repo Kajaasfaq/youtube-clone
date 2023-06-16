@@ -23,10 +23,10 @@ const Head = () => {
       <button className='h-8 w-12 bg-gray-400 rounded-r-2xl'><img alt='search-btn' className='w-7 h-7 ml-2' src={SearchBtn}/></button>
       <img className='h-6 w-6  mt-1 cursor-pointer bg-white ml-2 hover:bg-gray-400 rounded-3xl ' alt='voice-search' src={VoiceSearch} />
     </div>
-    <div className='flex mt-3 gap-7'>
-      <img className='h-8 w-9 bg-white  hover:bg-gray-400 rounded-3xl hover:w-9 hover:h-8' alt='create-video' src={CreateSearch} />
-      <img className='h-8 w-8 bg-white  hover:bg-gray-400 rounded-3xl hover:w-8 hover:h-8' alt='voice-search' src={Nofi} />
-      <img className='h-8 w-10 bg-white border border-black rounded-3xl mr-2  hover:bg-gray-400  hover:rounded-3xl hover:w-10 hover:h-8' alt='user' src={User} />
+    <div className='flex mr-3 mt-3 gap-7'>
+      <img className='h-7 w-7 bg-white  hover:bg-gray-400 rounded-3xl' alt='create-video' src={CreateSearch} />
+      <img className='h-7 w-7 bg-white  hover:bg-gray-400 rounded-3xl' alt='voice-search' src={Nofi} />
+      <img className='h-7 w-7 bg-white border border-black rounded-3xl mr-2  hover:bg-gray-400  hover:rounded-3xl' alt='user' src={User} />
     </div>
     </div>
   )
