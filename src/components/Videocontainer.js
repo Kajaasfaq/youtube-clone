@@ -6,32 +6,57 @@ import { openSideBar } from '../utils/sidebarSlice'
 import { useDispatch } from 'react-redux'
 
 const Videocontainer = () => {
-    const [videos , setVideos] = useState([])
+  const [videos, setVideos] = useState([]);
+  const [page, setPage] = useState(1);
 
-    useEffect(() => {
-        getVideo()
-    }, [])
-    const getVideo = async () => {
-        const data = await fetch(YOUTUBE_VIDEO_API);
-        const json = await data.json();
-        setVideos(json.items)
-    }
-    const dispatch = useDispatch()
+  
   const menuOpen = () => {
-    dispatch(openSideBar())
-  }
+    dispatch(openSideBar());
+  };
+
   useEffect(() => {
-    menuOpen()
-  } )
+    menuOpen();
+  }, []);
+   
+ 
+  const getVideos = async (page) => {
+    const data = await fetch(`${YOUTUBE_VIDEO_API}&page=${page}`);
+    const json = await data.json();
+    setVideos((prevVideos) => [...prevVideos, ...json.items]);
+  };
+
+  const handleScroll = () => {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 10) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+ 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    getVideos(page);
+  }, [page]);
+  
+
+  const dispatch = useDispatch();
+
   return (
     <>
-    <div className='flex flex-wrap gap-1'>
-    {videos.map((video) => 
-    <Link to={"/watch?v=" + video.id}> <Videomenu key={video.id} info={video}/> </Link> )}
-    </div>
+      <div className='flex flex-wrap gap-1'>
+        {videos.map((video) => (
+          <Link to={'/watch?v=' + video.id} key={video.id}>
+            <Videomenu info={video} />
+          </Link>
+        ))}
+      </div>
     </>
-  )
-}
+  );
+};
 
-
-export default Videocontainer
+export default Videocontainer;
