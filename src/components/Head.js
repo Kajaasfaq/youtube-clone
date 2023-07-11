@@ -55,7 +55,7 @@ const getSearchSuggestion = async () => {
 
   return (
     <>
-    <div className='flex justify-between shadow-md'>
+    <div className='flex justify-between shadow-md '>
     <div className='flex m-1 p-2 gap-5'>
       <img onClick={() => menuToggler()} className='h-8 w-8 bg-white cursor-pointer' alt='hum-icon' src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png' />
       <a href='/'><img className='h-8 w-25' alt='youtube-logo' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuE54d8krphaVP1AQ1Jd4G1uRqLcA2N81TnA&usqp=CAU' /></a>
@@ -78,7 +78,7 @@ const getSearchSuggestion = async () => {
     <div className='flex mr-3 mt-3 gap-7'>
       <img className='h-7 w-7 bg-white  hover:bg-gray-400 rounded-3xl' alt='create-video' src={CreateSearch} />
       <img className='h-7 w-7 bg-white  hover:bg-gray-400 rounded-3xl' alt='voice-search' src={Nofi} />
-      <img className='h-7 w-7 bg-white border border-black rounded-3xl mr-2  hover:bg-gray-400  hover:rounded-3xl' alt='user' src={User} />
+      <a href='/login'><img className='h-7 w-7 bg-white border border-black rounded-3xl mr-2  hover:bg-gray-400  hover:rounded-3xl' alt='user' src={User} /></a>
     </div>
     </div>
     </>

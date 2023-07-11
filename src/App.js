@@ -6,6 +6,7 @@ import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContianer from "./components/MainContianer";
 import Watchpage from "./components/Watchpage";
+import LoginAuth from "./components/LoginAuth";
 
 const AppRouter = createBrowserRouter([
   {
@@ -21,9 +22,16 @@ const AppRouter = createBrowserRouter([
         element : <Watchpage />
       }
     ],
-  }
+      
+  },
+  
+  {
+    path : "/login",
+    element : <LoginAuth />,
+  },
   
 ])
+
 
 function App() {
   return (

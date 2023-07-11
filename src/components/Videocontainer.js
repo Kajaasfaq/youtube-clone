@@ -4,10 +4,13 @@ import Videomenu from './Videomenu'
 import { Link } from 'react-router-dom'
 import { openSideBar } from '../utils/sidebarSlice'
 import { useDispatch } from 'react-redux'
+import Shimmer from './Shimmer'
 
 const Videocontainer = () => {
   const [videos, setVideos] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   
   const menuOpen = () => {
@@ -23,6 +26,7 @@ const Videocontainer = () => {
     const data = await fetch(`${YOUTUBE_VIDEO_API}&page=${page}`);
     const json = await data.json();
     setVideos((prevVideos) => [...prevVideos, ...json.items]);
+    setIsLoading(false)
   };
 
   const handleScroll = () => {
@@ -46,7 +50,8 @@ const Videocontainer = () => {
 
   const dispatch = useDispatch();
 
-  return (
+  
+  return isLoading ? (<Shimmer />) : (
     <>
       <div className='flex flex-wrap gap-1'>
         {videos.map((video) => (
